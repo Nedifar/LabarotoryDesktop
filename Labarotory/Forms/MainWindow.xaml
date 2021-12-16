@@ -1,0 +1,55 @@
+﻿<Window x:Class="Labarotory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Labarotory"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Sign" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF92D050">
+        <Border MinWidth="300" MaxWidth="500" CornerRadius="20" Background="White" Margin="15" Padding="30" VerticalAlignment="Center">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Hi, friend" FontSize="20" FontWeight="Bold" Margin="0 0 0 20"/>
+                <Grid Margin="0 0 0 20">
+                    <Button HorizontalAlignment="Left" Content="Регистрация" Click="clickRegistration" Background="#FF349C3D" BorderBrush="#FF349C3D" />
+                    <Button HorizontalAlignment="Right" Content="Вход" Click="clickSign" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#FF349C3D"/>
+                </Grid>
+                <TextBox HorizontalAlignment="Left" x:Name="tbEmail" materialDesign:HintAssist.Hint="Введите Email" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Width="411" CaretBrush="#FF349C3D" materialDesign:TextFieldAssist.UnderlineBrush="#FF349C3D" />
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <PasswordBox x:Name="tbPassword" materialDesign:HintAssist.Hint="Введите Password" Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}" Width="411" materialDesign:TextFieldAssist.UnderlineBrush="#FF349C3D"/>
+                        <TextBox x:Name="tbPasswordVisible" Visibility="Collapsed" materialDesign:HintAssist.Hint="Введите Password" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Width="411"/>
+                    </StackPanel>
+                    <Button Width="30" Height="30" BorderBrush="{x:Null}" Background="{x:Null}" Padding="5" Click="Click_Visible">
+                        <materialDesign:PackIcon Kind="Eye" x:Name="eye" Foreground="#FF349C3D"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="stackCaptcha" Visibility="Collapsed">
+                    <Image x:Name="captchaBox" Height="60" Stretch="Uniform" />
+                    <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="textCaptcha" materialDesign:HintAssist.Hint="Введите Captcha" Width="411" HorizontalAlignment="Left" Margin="0 0 0 20"/>
+                        <materialDesign:PackIcon x:Name="CheckIcon" Width="30" Height="30" Foreground="#FF349C3D" Kind="Check" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <Grid >
+                        <Button Content="Обновить" Click="clUpdate" HorizontalAlignment="Left" Background="#FF349C3D" BorderBrush="#FF349C3D"/>
+                        <Button Content="Ok" Click="clAccept" HorizontalAlignment="Right" Background="#FF349C3D" BorderBrush="#FF349C3D"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <RadioButton Background="#FF349C3D" BorderBrush="#FF349C3D" GroupName="user" Content="Лаборант" x:Name="rbLaborant" Checked="check"/>
+                    <RadioButton Background="#FF349C3D" BorderBrush="#FF349C3D" GroupName="user" Margin="10 0" Content="Исследователь" Checked="check" x:Name="rbExplorer"/>
+                    <RadioButton Background="#FF349C3D" BorderBrush="#FF349C3D" GroupName="user" Margin="10 0" Content="Бухгалтер" Checked="check" x:Name="rbAccountant"/>
+                    <RadioButton Background="#FF349C3D" BorderBrush="#FF349C3D" GroupName="user" Margin="10 0" Content="Администратор" Checked="check" x:Name="rbAdmin"/>
+                </StackPanel>
+                <Button IsEnabled="False" x:Name="bSign" Content="Sign" Margin="0 20 0 0" Click="clicktoSign" Background="#FF349C3D" BorderBrush="#FF349C3D">
+                </Button>
+            </StackPanel>
+        </Border>
+        <materialDesign:DialogHost Content="DialogHost" HorizontalAlignment="Left" Margin="1126,-3,-334,0" VerticalAlignment="Top" Width="100"/>
+        <Button Margin="745,494,33,43" Click="Button_Click" Visibility="Collapsed"/>
+    </Grid>
+</Window>
