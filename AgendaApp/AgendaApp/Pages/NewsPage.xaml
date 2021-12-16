@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="AgendaApp.Pages.NewsPage">
+    <Grid BackgroundColor="#F3F5F9" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="#455399" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton x:Name="EditBt" Clicked="ImageButton_Clicked" IsVisible="false" BorderColor="Transparent" BackgroundColor="Transparent" Margin="30" Grid.Column="2" Source="icons8edit64.png" />
+            <ImageButton x:Name="RegBt" Clicked="RegClicked_Clicked" IsVisible="true" BorderColor="Transparent" BackgroundColor="Transparent" Margin="30" Grid.Column="0" Source="reg.png" />
+            <StackLayout Spacing="3"  Grid.ColumnSpan="3" Margin="0,30,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label TextColor="White" FontSize="40" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text=".NEDIFAR " FontSize="40" FontAttributes="Bold"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout x:Name="laySigned" IsVisible="false">
+                    <Label x:Name="lWelcome" />
+                </StackLayout>
+                <StackLayout x:Name="laySign">
+                    <Entry x:Name="eLogin" Placeholder="Login"/>
+                    <Entry x:Name="ePass" IsPassword="True" Placeholder="Password"/>
+                    <Button Text="Войти" Clicked="clSign" BackgroundColor="#455399"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid >
+        <Image x:Name="loading" IsVisible="false" Source="reloadcat.gif" Grid.Row="2" />
+        <pv:PancakeView Grid.Row="1" HasShadow="True" HeightRequest="80" Margin="0,-40,0,0" 
+                        HorizontalOptions="Center">
+            
+        </pv:PancakeView>
+        <CollectionView x:Name="cvSchedule" Grid.Row="2" Margin="25" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                        SelectionMode="None" >
+            <CollectionView.Header>
+                <Label Text="Revenge" TextColor="Black" FontSize="18"/>
+            </CollectionView.Header>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <pv:PancakeView HasShadow="True" BackgroundColor="White" VerticalOptions="StartAndExpand" 
+                                    HorizontalOptions="FillAndExpand">
+                        <Grid VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView BackgroundColor="{Binding Color}" WidthRequest="3" HorizontalOptions="Start"
+                                     VerticalOptions="FillAndExpand"/>
+                            <Expander Grid.Column="1">
+                                <Expander.Header>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="3.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <BoxView Grid.Column="1" BackgroundColor="#F2F4F8" WidthRequest="1" HorizontalOptions="Start" 
+                                                 VerticalOptions="FillAndExpand"/>
+                                        <Label Text="{Binding Numerable}" Grid.Column="0" TextColor="Black" FontSize="28" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                        <StackLayout Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center" Margin="20">
+                                            <Label Text="{Binding Heading}" TextColor="Black" FontSize="15"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Expander.Header>
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="3.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView Grid.Column="1" BackgroundColor="#F2F4F8" WidthRequest="1" HorizontalOptions="Start" 
+                                             VerticalOptions="FillAndExpand"/>
+                                    <StackLayout Grid.Column="2" Spacing="10">
+                                        <Label Text="{Binding datePublic}" TextColor="Black" Opacity="0.5" FontSize="10" Margin="20,0"/>
+                                        <StackLayout HorizontalOptions="Start" VerticalOptions="Center" Margin="20,0,0,20">
+                                            <Label TextColor="#2F3246" FontSize="12">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <FormattedString.Spans>
+                                                            <Span Text="{Binding Heading}" FontAttributes="Bold"/>
+                                                            <Span Text="{Binding Text}" FontAttributes="Bold"/>
+                                                        </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </Expander>
+                        </Grid>
+                    </pv:PancakeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

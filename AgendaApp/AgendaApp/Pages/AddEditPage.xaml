@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AgendaApp.Pages.AddEditPage">
+    <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0" Grid.Row="0">
+                <Label Text=".Nedifar"/>
+                <Image Source="mediaw.png" Opacity="0.6" VerticalOptions="Start" Margin="0,3,0,0"/>
+            </StackLayout>
+        <Grid RowSpacing="20" Grid.Row="1" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1">
+                <Entry Text="{Binding Login}" IsEnabled="False" Placeholder="Login" PlaceholderColor="#bababa" FontSize="16">
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Id_Patient}" Value="0">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Entry Text="{Binding Password}" Placeholder="Password" PlaceholderColor="#bababa" FontSize="16"/>
+                <Entry Text="{Binding Name}" IsEnabled="False" Placeholder="Name" PlaceholderColor="#bababa" FontSize="16">
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Id_Patient}" Value="0">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Entry Text="{Binding Passport_s}" IsEnabled="False" Placeholder="Passport Series" PlaceholderColor="#bababa" FontSize="16">
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Id_Patient}" Value="0">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Entry Text="{Binding Passport_n}" IsEnabled="False" Placeholder="Passport Number" PlaceholderColor="#bababa" FontSize="16">
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Id_Patient}" Value="0">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Entry Text="{Binding Telephone}" Placeholder="Telephone" PlaceholderColor="#bababa" FontSize="16"/>
+                <Entry Text="{Binding Email}" Placeholder="Email" PlaceholderColor="#bababa" FontSize="16"/>
+                <DatePicker Date="{Binding Date}" x:Name="dpDate" FontSize="16">
+                    <DatePicker.Triggers>
+                        <DataTrigger TargetType="DatePicker" Binding="{Binding Id_Patient}" Value="0">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                    </DatePicker.Triggers>
+                </DatePicker>
+                <Entry Text="{Binding FullYear}" IsEnabled="False" Placeholder="Полных лет" PlaceholderColor="#bababa" FontSize="16">
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Id_Patient}" Value="0">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+                <Entry Text="{Binding SocialSecN}" IsEnabled="False" Placeholder="Social number" PlaceholderColor="#bababa" FontSize="16">
+                    <Entry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Id_Patient}" Value="0">
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </DataTrigger>
+                    </Entry.Triggers>
+                </Entry>
+            </StackLayout>
+            <Button Text="Save" BackgroundColor="#3897f0" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="2" Clicked="clSave"/>
+        </Grid>
+    </Grid>
+</ContentPage>
