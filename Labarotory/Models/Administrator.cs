@@ -13,5 +13,6 @@ namespace Labarotory.Models
         public int Id_Administrator { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        //
     }
 }
