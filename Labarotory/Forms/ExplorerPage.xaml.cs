@@ -1,30 +1,17 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Labarotory.Forms
 {
-    /// <summary>
-    /// Логика взаимодействия для ExplorerPage.xaml
-    /// </summary>
     public partial class ExplorerPage : UserControl
     {
         List<Models.ServiceOrders> orders = new List<Models.ServiceOrders>();
@@ -42,16 +29,13 @@ namespace Labarotory.Forms
             try
             {
                 cbOrderBio.IsEnabled = false;
-            using (var http = new HttpClient())
-            {
-                Models.ServiceOrders analy = (Models.ServiceOrders)(cbOrderBio.SelectedItem);
-                var analyz = new analyz { patient = analy.Order.Id_Patient.ToString(), services = new List<service> { new service { serviceCode = analy.Id_Service } } };
-                var json = JsonConvert.SerializeObject(analyz);
-                var data = new StringContent(json, Encoding.UTF8, "application/json");
-                var url = "http://localhost:5000/api/analyzer/Biorad/";
-
-
-
+                using (var http = new HttpClient())
+                {
+                    Models.ServiceOrders analy = (Models.ServiceOrders)(cbOrderBio.SelectedItem);
+                    var analyz = new analyz { patient = analy.Order.Id_Patient.ToString(), services = new List<service> { new service { serviceCode = analy.Id_Service } } };
+                    var json = JsonConvert.SerializeObject(analyz);
+                    var data = new StringContent(json, Encoding.UTF8, "application/json");
+                    var url = "http://localhost:5000/api/analyzer/Biorad/";
                     var result = await http.PostAsync(url, data);
                     result.EnsureSuccessStatusCode();
                     if (result.StatusCode == HttpStatusCode.OK)
@@ -104,18 +88,17 @@ namespace Labarotory.Forms
                         }
                         Models.context.GetContext().SaveChanges();
                     }
-
                     AddcbService();
                 }
-            cbOrderBio.IsEnabled = true;
+                cbOrderBio.IsEnabled = true;
             }
-                            catch
+            catch
             {
                 MessageBox.Show("Включите анализатор!");
                 cbOrderBio.IsEnabled = true;
             }
         }
-        
+
         class analyz
         {
             public string patient { get; set; }
@@ -199,7 +182,6 @@ namespace Labarotory.Forms
                             ord.Status = "Finished";
                         }
                         Models.context.GetContext().SaveChanges();
-
                     }
                     AddcbService();
                 }

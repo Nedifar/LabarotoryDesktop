@@ -13,8 +13,8 @@
             <RowDefinition Height="22*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <ComboBox x:Name="cbLoginFiltr" DisplayMemberPath="Login" Height="24" HorizontalAlignment="Left" Margin="0,21,0,9"/>
-        <ComboBox x:Name="cbServiceFilter" DisplayMemberPath="Name" Height="24" HorizontalAlignment="Right" Margin="0,21,0,9"/>
+        <ComboBox x:Name="cbLoginFiltr" DisplayMemberPath="Login" Width="120" Height="24" HorizontalAlignment="Left" Margin="0,21,0,9"/>
+        <ComboBox x:Name="cbServiceFilter" DisplayMemberPath="Name" Width="120" Height="24" HorizontalAlignment="Right" Margin="0,21,0,9"/>
         <WindowsFormsHost Grid.Row="1" x:Name="gr">
             
         </WindowsFormsHost>
