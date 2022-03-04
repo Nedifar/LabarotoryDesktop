@@ -18,7 +18,7 @@ namespace AdminMobile
             InitializeComponent();
             using(var http = new HttpClient())
             {
-                var res = http.GetAsync($"http://drankmin-001-site1.htempurl.com/api/lastdance/allIzm");
+                var res = http.GetAsync($"https://bsite.net/GrishaMasha/api/lastdance/allIzm");
                 var response = res.Result.Content.ReadAsStringAsync();
                 grip.Text = response.Result;
             }

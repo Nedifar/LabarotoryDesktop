@@ -25,7 +25,7 @@ namespace AdminMobile
         {
             using (var http = new HttpClient())
             {
-                var res = await http.GetAsync($"http://drankmin-001-site1.htempurl.com/api/lastdance/addFormat/{addFormat.Text}");
+                var res = await http.GetAsync($"https://bsite.net/GrishaMasha/api/lastdance/addFormat/{addFormat.Text}");
                 res.EnsureSuccessStatusCode();
                 await DisplayAlert("Отлично", "Все хорошо", "Ok");
             }
@@ -35,7 +35,7 @@ namespace AdminMobile
         {
             using (var http = new HttpClient())
             {
-                var res = await http.GetAsync($"http://drankmin-001-site1.htempurl.com/api/lastdance/DeleteIzm/{deleteIzm.Text}");
+                var res = await http.GetAsync($"https://bsite.net/GrishaMasha/api/lastdance/DeleteIzm/{deleteIzm.Text}");
                 res.EnsureSuccessStatusCode();
                 await DisplayAlert("Отлично", "Все хорошо", "Ok");
             }
